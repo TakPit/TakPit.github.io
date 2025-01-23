@@ -14,8 +14,8 @@ p {
 }
 
 html {
-  background: hsl(45 75% 95%);
-  color: hsl(35 75% 20%);
+  background: hsl(44, 67%, 65%);
+  color: hsl(34, 69%, 14%);
   display: grid;
   min-block-size: 100svh;
 }
@@ -31,7 +31,7 @@ body {
 
 body::before {
   aspect-ratio: 1;
-  background-color: #fff;
+  background-color: hsl(44, 70%, 57%); /*  #fff; */
   block-size: 4lh;
   content: "";
   position: absolute;
@@ -44,7 +44,7 @@ p {
 }
 
 p:not(p + p)::first-letter {
-  color: hsl(35 70% 40%);
+  color: hsl(34, 69%, 14%); /*hsl(35 70% 40%)*/
   float: left;
   font-size: 2.25lh;
   font-weight: 600;
