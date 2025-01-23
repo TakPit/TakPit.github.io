@@ -55,3 +55,26 @@ p:not(p + p)::first-letter {
 p + p {
   text-indent: 2em;
 }
+
+
+/* Additional code I added to cite authors at the end of the page */
+/* to do so, I created a special class */
+
+.notes {
+  color: grey; /* Change text color to grey */
+  font-family: "Literata", serif; /* same font, but smaller size than the main text to make clear that it's not the book anymore */
+  font-size: clamp(14px, 8px + 2vw, 10px);
+  line-height: 1.5;
+  margin-top: 2em; /* Adds space above the new text */
+  /* max-inline-size: 34em; no more limitation on inline size, there is no need for it */ 
+  padding: 0; /* padding=0 to avoid the stupid space from the above line */
+}
+
+.notes a {
+  color: grey; /* Same color as the .notes text for links*/
+}
+
+p.notes {
+  text-indent: 0; /* This to avoid that the 2em indentation applied to p + p */
+}
+
