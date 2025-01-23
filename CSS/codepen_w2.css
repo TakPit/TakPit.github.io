@@ -1,0 +1,57 @@
+/* Justified, Auto-Hyphenated Text */
+
+p {
+  hyphenate-limit-chars: 7;
+  hyphens: auto;
+  text-align: justify;
+  text-wrap: pretty;
+}
+
+/* The rest of the demo… */
+
+* {
+  margin: 0;
+}
+
+html {
+  background: hsl(45 75% 95%);
+  color: hsl(35 75% 20%);
+  display: grid;
+  min-block-size: 100svh;
+}
+
+body {
+  font-family: "Literata", serif;
+  font-size: clamp(16px, 8px + 2vw, 20px);
+  line-height: 1.5;
+  margin: auto;
+  max-inline-size: 34em;
+  padding: 2lh 1lh;
+}
+
+body::before {
+  aspect-ratio: 1;
+  background-color: #fff;
+  block-size: 4lh;
+  content: "";
+  position: absolute;
+  rotate: -6deg;
+  translate: -20% -12.5%;
+}
+
+p {
+  position: relative;
+}
+
+p:not(p + p)::first-letter {
+  color: hsl(35 70% 40%);
+  float: left;
+  font-size: 2.25lh;
+  font-weight: 600;
+  line-height: 0.75;
+  margin-inline-end: 0.125em;
+}
+
+p + p {
+  text-indent: 2em;
+}
