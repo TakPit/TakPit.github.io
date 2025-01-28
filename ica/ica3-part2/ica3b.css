@@ -61,7 +61,7 @@ body > * {
   padding: 1%;
 }
 
-main, header, nav, article, aside, footer, section { /* all those elements of HTML has the color green and 1% padding */
+main, header, nav, article, aside, footer, section { /* all those elements of HTML have the color green and 1% padding */
   background-color: rgba(0,255,0,0.5);
   padding: 1%;
 }
