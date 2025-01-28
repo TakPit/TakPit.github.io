@@ -25,5 +25,6 @@ p, li, dd, dt, address {
 
 /* added this to the original css to avoid the different margin brought by blockquote, to make it appear as in the image */
 blockquote { 
+  font-size: inherit;
   margin: 0;
 }
