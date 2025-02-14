@@ -1,7 +1,7 @@
 body {
   margin: 0;
   overflow: hidden;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: white;
 }
 
@@ -10,12 +10,12 @@ body {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh; 
-  background-image: url("../wa/wa5/hooked_background.png"); 
+  height: 100vh;
+  background-image: url("../wa/wa5/hooked_background.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  overflow: hidden; 
+  overflow: hidden;
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
@@ -55,7 +55,8 @@ body {
   height: auto;
 }
 
-#container #leftbox, #container #rightbox {
+#container #leftbox,
+#container #rightbox {
   position: absolute;
   bottom: 3%;
   width: 20%; /* Example: 10% of container width */
@@ -64,7 +65,6 @@ body {
   min-height: 60px;
   border: 4px solid rgb(51, 51, 51); /* Black border */
 }
-
 
 #container #leftbox {
   display: flex; /* Arrange children in a row */
@@ -81,13 +81,13 @@ body {
   aspect-ratio: 1/1;
   min-width: 60px;
   background-color: rgb(51, 51, 51); /* Example background color */
+  font-size:0.8em;
 }
-
 
 #container #rightbox {
   display: flex; /* Arrange children in a row */
   flex-direction: row;
-  align-items: center; /* Align vertically */
+  align-items: center;
   justify-content: space-between;
   right: 3%;
   background-color: blue; /* Red background */
@@ -99,15 +99,14 @@ body {
   aspect-ratio: 1/1;
   min-width: 60px;
   background-color: rgb(51, 51, 51); /* Example background color */
+  font-size:0.8em;
 }
 
-
-#leftbox #zen, #rightbox #kaige {
+#leftbox #zen,
+#rightbox #kaige {
   text-align: center;
   flex-grow: 1;
 }
-
-
 
 footer {
   position: absolute;
