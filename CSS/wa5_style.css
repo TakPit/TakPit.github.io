@@ -1,22 +1,39 @@
 body {
   margin: 0;
+  overflow: hidden;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
 }
 
-
 #container {
-    background-image: url("../wa/wa5/hooked_background.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: absolute;
-    width: 100%;
-    height: 100vh; /* Ensure the container takes the full height of the viewport */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh; 
+  background-image: url("../wa/wa5/hooked_background.png"); 
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden; 
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  flex-direction: column; /* Stack children vertically */
+  text-align: center; /* Center horizontally */
+}
+
+#container img {
+  height: 100%;
+  size: cover;
 }
 
 #logo {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 3%;
+  left: 3%;
   width: 15%;
+  min-width: 200px;
   height: auto;
 }
 
@@ -27,8 +44,9 @@ body {
 
 #judges {
   position: absolute;
-  top: 10px;
-  width: 50%;
+  top: 1%;
+  width: 35%;
+  min-width: 500px;
   height: auto;
 }
 
@@ -37,12 +55,58 @@ body {
   height: auto;
 }
 
-#box {
+#container #leftbox, #container #rightbox {
   position: absolute;
-  bottom: 20px; /* Fixed distance from the bottom */
-  left: 20px; /* Fixed distance from the left */
-  width: 200px; /* Set the width of the box */
-  height: 100px; /* Set the height of the box */
+  bottom: 3%;
+  width: 25%; /* Example: 10% of container width */
+  min-width: 300px;
+  height: 5%; /* Example: 5% of container height */
+  min-height: 80px;
+  border: 4px solid rgb(51, 51, 51); /* Black border */
+}
+
+
+#container #leftbox {
+  display: flex; /* Arrange children in a row */
+  flex-direction: row-reverse;
+  align-items: center; /* Align vertically */
+  justify-content: space-between;
+  left: 3%;
   background-color: red; /* Red background */
-  border: 2px solid black; /* Black border */
+}
+
+#leftbox #zen, #rightbox #kaige {
+  text-align: center;
+  flex-grow: 1;
+}
+
+
+
+#leftscore {
+  position: absolute;
+  height: 100%;
+  aspect-ratio: 1/1;
+  min-width: 80px;
+  background-color: rgb(51, 51, 51); /* Example background color */
+}
+
+
+
+#container #rightbox {
+  right: 3%;
+  background-color: blue; /* Red background */
+}
+
+#rightscore {
+  position: absolute;
+  height: 100%;
+  aspect-ratio: 1/1;
+  min-width: 80px;
+  background-color: rgb(51, 51, 51); /* Example background color */
+}
+
+footer {
+  position: absolute;
+  bottom: 12%;
+  font-size: 3em;
 }
