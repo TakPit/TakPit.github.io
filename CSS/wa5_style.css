@@ -79,9 +79,10 @@ body {
   position: absolute;
   height: 100%;
   aspect-ratio: 1/1;
-  min-width: 60px;
   background-color: rgb(51, 51, 51); /* Example background color */
-  font-size:0.8em;
+  display: flex; /* Arrange children in a row */
+  align-items: center; /* Align vertically */
+  justify-content: center;
 }
 
 #container #rightbox {
@@ -97,9 +98,10 @@ body {
   position: absolute;
   height: 100%;
   aspect-ratio: 1/1;
-  min-width: 60px;
-  background-color: rgb(51, 51, 51); /* Example background color */
-  font-size:0.8em;
+  background-color: rgb(51, 51, 51);
+  display: flex; /* Arrange children in a row */
+  align-items: center; /* Align vertically */
+  justify-content: center;
 }
 
 #leftbox #zen,
