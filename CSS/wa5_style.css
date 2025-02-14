@@ -58,10 +58,10 @@ body {
 #container #leftbox, #container #rightbox {
   position: absolute;
   bottom: 3%;
-  width: 25%; /* Example: 10% of container width */
-  min-width: 300px;
+  width: 20%; /* Example: 10% of container width */
+  min-width: 200px;
   height: 5%; /* Example: 5% of container height */
-  min-height: 80px;
+  min-height: 60px;
   border: 4px solid rgb(51, 51, 51); /* Black border */
 }
 
@@ -75,13 +75,6 @@ body {
   background-color: red; /* Red background */
 }
 
-#leftbox #zen, #rightbox #kaige {
-  text-align: center;
-  flex-grow: 1;
-}
-
-
-
 #leftscore {
   position: absolute;
   height: 100%;
@@ -91,8 +84,10 @@ body {
 }
 
 
-
 #container #rightbox {
+  display: flex; /* Arrange children in a row */
+  align-items: center; /* Align vertically */
+  justify-content: space-between;
   right: 3%;
   background-color: blue; /* Red background */
 }
@@ -104,6 +99,14 @@ body {
   min-width: 80px;
   background-color: rgb(51, 51, 51); /* Example background color */
 }
+
+
+#leftbox #zen, #rightbox #kaige {
+  text-align: center;
+  flex-grow: 1;
+}
+
+
 
 footer {
   position: absolute;
