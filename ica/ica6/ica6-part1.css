@@ -1,0 +1,48 @@
+body {
+  background-color: beige;
+}
+#box1 {
+  border-style: solid;
+  width: 40vw;
+  height: 33vh;
+  border-color: rgba(20, 250, 173, 10);
+  border-width: 3px;
+  border-radius: 10px;
+  background-color: mediumseagreen;
+  position: relative;
+}
+
+#text1 {
+  position: absolute;
+  left: 101%;
+  top: 30%;
+}
+
+#box2 {
+  width: 73vw;
+  height: 33vh;
+  border-style: solid;
+  border-radius: 3px;
+  border-color: purple;
+  background-color: mediumvioletred;
+  position: relative;
+}
+
+#text2 {
+  position: absolute;
+  margin: 0;
+  left: 5px;
+  bottom: 3px;
+}
+
+#box3 {
+  border-radius: 10px;
+  background-color: orangered;
+  position: fixed;
+  top: 0;
+}
+
+#text3 {
+  font-size: 50px;
+  border: 5px solid green;
+}

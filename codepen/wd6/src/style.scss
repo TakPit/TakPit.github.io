@@ -1,0 +1,92 @@
+:root {
+  --bg-color: #ddd;
+  --p-color: #333;
+  --a-color: Teal;
+  --a-hover-color: LightSeaGreen;
+  --citation-bg-color: #1E0519;
+  --citation-p-color: Salmon;
+  --citation-a-color: MediumVioletRed;
+  --citation-a-hover-color: DeepPink;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  &:focus {
+    outline: none;
+  }
+}
+
+* {
+  font-family: monaco, courier;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  padding: 1rem;
+  color: var(--p-color);
+}
+
+a {
+  color: var(--a-color);
+  &:hover {
+    color: var(--a-hover-color);
+  }
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+  background: var(--bg-color);
+  // @media (min-width: 768px) {
+  //   background: palegreen;
+  // }
+}
+
+.desc {
+  font-size: 48px;
+  line-height: 72px;
+}
+
+.inline-img {
+  width: auto;
+  height: 1em;
+  margin-top: 14px;
+  display: inline;
+  vertical-align: top;
+}
+
+// citation
+
+.citation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  background: var(--citation-bg-color);
+  p {
+    margin: 0;
+    padding: 10px;
+    font-size: 12px;
+    color: var(--citation-p-color);
+    a {
+      color: var(--citation-a-color);
+      cursor: pointer;
+      &:hover {
+        color: var(--citation-a-hover-color);
+      }
+    }
+  }
+}
