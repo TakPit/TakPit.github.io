@@ -59,8 +59,7 @@ a:hover {
 
 .inline-img {
   width: auto;
-  height: 1em;
-  margin-top: 14px;
+  height: 1.4em;
   display: inline;
   vertical-align: top;
 }
