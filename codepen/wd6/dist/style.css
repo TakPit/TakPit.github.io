@@ -1,9 +1,9 @@
 :root {
-  --bg-color: #ddd;
+  --bg-color: #d1ffab;
   --p-color: #333;
   --a-color: Teal;
   --a-hover-color: LightSeaGreen;
-  --citation-bg-color: #1E0519;
+  --citation-bg-color: #d1ffab; /**/
   --citation-p-color: Salmon;
   --citation-a-color: MediumVioletRed;
   --citation-a-hover-color: DeepPink;
@@ -70,6 +70,7 @@ a:hover {
   left: 0;
   z-index: 100;
   background: var(--citation-bg-color);
+  border: #1E0519 solid 2px;
 }
 .citation p {
   margin: 0;
