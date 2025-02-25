@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      div {
+        border: 5px solid black;
+        width: 150px;
+        height: 150px;
+        background-color: blue;
+        /* animation */
+        animation-name: slide;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        animation-timing-function: ease-in-out;
+        /* transition */
+        transition: background-color 1s, width 1s, height 1s, rotate 1s;
+      }
+      @keyframes slide {
+        0% {
+          height: 150px;
+          width: 150px;
+          translate: 0 0;
+        }
+
+        50% {
+          height: 300px;
+          width: 300px;
+        }
+        100% {
+          height: 150px;
+          width: 150px;
+          translate: 89vw 0;
+        }
+      }
+      div:hover {
+        background-color: orange;
+        width: 200px; /* does not work because animation overrides it */
+        height: 200px; /* does not work because animation overrides it */
+        rotate: 90deg;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>
