@@ -1,0 +1,74 @@
+html:has(dialog[open]) {
+  overflow: hidden;
+  scrollbar-gutter: stable;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  font-family: system-ui, sans-serif;
+  font-size: 2rem;
+  margin: 1.5rem;
+  color: lime;
+  background-color: black;
+}
+
+main {
+  display: grid;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+  border-radius: 1rem;
+}
+
+lightbox-image:defined {
+  display: block;
+  cursor: zoom-in;
+}
+
+lightbox-image {
+  max-width: 250px;
+}
+
+dialog {
+  --_gutter: 2rem;
+  padding: 1rem;
+  outline: unset;
+  border: unset;
+  background: unset;
+  max-height: 100vh;
+  cursor: zoom-out;
+
+  &::-webkit-backdrop {
+    background: lime;
+    opacity: 0.75;
+  }
+
+  &::backdrop {
+    background: lime;
+    opacity: 0.75;
+  }
+
+  form {
+    position: absolute;
+    opacity: 0;
+  }
+
+  img {
+    max-height: calc(100vh - var(--_gutter));
+  }
+}
+
+::view-transition-group(active-lightbox-image) {
+  -webkit-animation-duration: 300ms;
+          animation-duration: 300ms;
+  -webkit-animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+          animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Lightbox with View Transition API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link
+      rel="stylesheet"
+      href="https://public.codepenassets.com/css/reset-2.0.min.css"
+   >
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>
+      <strong>My gallery of (some) cool tricking memories</strong>
+    </h1>
+    <!-- partial:index.partial.html -->
+    <main>
+      <lightbox-image dialog-id="lightbox">
+        <img src="../img/lago.png" alt="">
+      </lightbox-image>
+
+      <lightbox-image dialog-id="lightbox">
+        <img src="../img/zen_hooked.png" alt="">
+      </lightbox-image>
+
+      <lightbox-image dialog-id="lightbox">
+        <img src="../img/me.jpg" alt="">
+      </lightbox-image>
+
+      <lightbox-image dialog-id="lightbox">
+        <img src="../img/torino.png" alt="">
+      </lightbox-image>
+
+      <lightbox-image dialog-id="lightbox">
+        <img src="../img/loco.png" alt="">
+      </lightbox-image>
+
+      <lightbox-image dialog-id="lightbox">
+        <img src="../img/special_guests.png" alt="">
+      </lightbox-image>
+    </main>
+
+    <dialog id="lightbox">
+      <form method="dialog">
+        <button>Close lightbox</button>
+      </form>
+    </dialog>
+    <!-- partial -->
+    <script src="./script.js"></script>
+  </body>
+</html>
