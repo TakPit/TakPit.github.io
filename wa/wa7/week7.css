@@ -1,0 +1,141 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(13, 0, 47) /* not blanchedalmond */;
+  color: gold; /* not black */
+  font-family: Georgia;
+}
+nav {
+  height: 50vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 20px;
+  background-color: cornflowerblue; /* not blueviolet */
+}
+nav a {
+  width: 10vw;
+  text-align: center;
+  text-decoration: none;
+  /* color:black; */ /* not black */
+}
+
+.image_container {
+  position: relative;
+  width: 48vh;
+  height: 60vh /* calc(100vh - 10vh) */;
+  border: 1px solid black;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+}
+
+.image_container img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* max-width: 100%;
+  height: auto; */
+  transition: opacity 0.5s linear;
+}
+
+.image_container img.img1 {
+  opacity: 0;
+}
+
+.image_container:hover img.img1 {
+  opacity: 1;
+}
+
+.image_container:hover img.img2 {
+  opacity: 0;
+}
+
+#wizard {
+  width: 60px;
+  height: 85px;
+  position: absolute;
+  z-index: 10;
+  background-image: url("./img/wizard2.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation-name: wizmove;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes wizmove {
+  0% {
+    left: -5vh;
+    top: -8vh;
+  }
+  25% {
+    left: -5vh;
+    top: 53vh;
+    width: 90px;
+    height: 127.5px;
+  }
+
+  50% {
+    left: 44vh;
+    top: 53vh;
+    width: 60px;
+    height: 85px;
+  }
+
+  75% {
+    left: 44vh;
+    top: -8vh;
+    width: 90px;
+    height: 127.5px;
+  }
+
+  100% {
+    left: -5vh;
+    top: -8vh;
+  }
+}
+
+#red-ball {
+  background-color: gold;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 5;
+  animation-name: ball;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes ball {
+  0% {
+    left: -2vh;
+    top: -2vh;
+  }
+  25% {
+    left: 47vh;
+    top: -2vh;
+    width: 30px;
+    height: 30px;
+  }
+  50% {
+    left: 47vh;
+    top: 59vh;
+    width: 20px;
+    height: 20px;
+  }
+
+  75% {
+    left: -2vh;
+    top: 59vh;
+    width: 30px;
+    height: 30px;
+  }
+  100% {
+    left: -2vh;
+    top: -2vh;
+  }
+}
