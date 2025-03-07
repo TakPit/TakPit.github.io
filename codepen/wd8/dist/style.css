@@ -6,7 +6,7 @@ body {
   flex-flow: row nowrap;
   align-items: center;
   justify-content: space-evenly;
-  font-size: 3rem;
+  font-size: 5rem;
   gap: 1em;
   background-color: lightgray;
 }
@@ -24,7 +24,6 @@ body {
   position: relative;
   box-sizing: content-box;
   overflow: hidden;
-  border: #000 3px solid;
   
   &::before {
     content: "";
@@ -108,7 +107,6 @@ body {
   position: relative;
   box-sizing: content-box;
   overflow: hidden;
-  border: #000 3px solid;
   
   &::before {
     content: "";
@@ -191,10 +189,10 @@ body {
 
 /* New frame styling */
 .frame {
-  border: 3px solid #000;      /* A solid, black border for the frame */
-  padding: 8px;                /* Space between the toggles and the frame edge */
+  border: .06em solid #000;      /* A solid, black border for the frame */
+  padding: .15em;                /* Space between the toggles and the frame edge */
   background-color: #fff;      /* White background for a classic picture look */
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);  /* Optional: adds a subtle shadow effect */
+  /* box-shadow: 0 4px 6px rgba(0,0,0,0.2);  Optional: adds a subtle shadow effect */
   
   /* Retain the flex layout for the children */
   display: flex;
