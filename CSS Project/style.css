@@ -1,0 +1,140 @@
+body {
+  font-family: "Arial", sans-serif;
+  font-size: 1.2em;
+  /* background: radial-gradient(circle, #42006f, #000); #0a002b */
+  background: linear-gradient(135deg, #000, #1b004e);
+  color: #42006f;
+  text-align: center;
+  padding: 20px 0px;
+  margin: 0;
+}
+
+nav {
+  background-color: #000;
+  background: radial-gradient(circle, #000 70%, rgba(0, 0, 0, 0) 100%);
+  padding: 0.5em;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  /* border-radius: 50px; */
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.8em 1.5em;
+  display: block;
+  text-align: center;
+  transition: background-color 0.5s;
+  border-radius: 15px;
+}
+
+nav a:hover {
+  background-color: #42006f;
+}
+
+img {
+  max-height: 12em;
+  float: left;
+}
+
+h1 {
+  font-family: "Georgia", serif;
+  font-size: 2em;
+  text-align: center;
+}
+
+h2 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.5em;
+}
+
+.event {
+  width: 80vw;
+  max-width: 700px;
+  margin: 0px auto;
+  padding: 0px 0px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+.event1 {
+  background: linear-gradient(135deg, #1b004e, #42006f);
+  border: 2px solid #d00;
+}
+.event1 h3 {
+  color: #d00;
+  text-transform: uppercase;
+}
+
+.event2 {
+  background: linear-gradient(135deg, #1b004e, #42006f);
+  border: 2px solid yellowgreen; /* #33e */
+}
+.event2 h3 {
+  color: yellowgreen;
+  text-transform: uppercase;
+}
+
+.date,
+.conductor,
+.location,
+.repertoire {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.description {
+  margin-top: 10px;
+  /* font-size: 1.1em; */
+}
+
+.buy-tickets {
+  text-align: center; /* center the button horizontally */
+  margin-top: 20px; /* give spacing above the button */
+}
+
+.buy-tickets a {
+  display: inline-block; /* allows width, height, and margin to work properly */
+  padding: 0.8em 1.5em;
+  background-color: transparent; /* button background color */
+  color: #fff;
+  text-decoration: none; /* remove underline */
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
+.event1 .buy-tickets a:hover {
+  background-color: #d00; /* hover color */
+}
+.event2 .buy-tickets a:hover {
+  background-color: yellowgreen; /* hover color */
+}
+
+
+@media screen and (max-width: 500px) {
+  body {
+    background: white;
+  }
+
+  nav ul {
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  nav a {
+    padding: 10px;
+  }
+}
