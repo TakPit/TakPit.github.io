@@ -1,4 +1,5 @@
 body {
+  /* font-family: "Georgia", serif; */
   font-family: "Arial", sans-serif;
   font-size: 1.2em;
   /* background: radial-gradient(circle, #42006f, #000); #0a002b */
@@ -22,7 +23,7 @@ body {
     #1b004e 10px,
     #1b004e 20px
   ); */
-  color: #42006f;
+  color: #fff/* #42006f */;
   text-align: center;
 }
 
@@ -65,7 +66,7 @@ img {
 }
 
 h1 {
-  font-family: "Georgia", serif;
+  font-family: "Georgia", serif; 
   font-size: 2em;
   margin: .8em .8em;
 }
@@ -87,6 +88,7 @@ h2 {
   border-radius: 15px;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
   color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .event1 {
