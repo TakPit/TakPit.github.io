@@ -2,16 +2,32 @@ body {
   font-family: "Arial", sans-serif;
   font-size: 1.2em;
   /* background: radial-gradient(circle, #42006f, #000); #0a002b */
-  background: linear-gradient(135deg, #000, #1b004e);
+  background: linear-gradient(
+    #1b004e 0%,
+    #42006f 10%,
+    #1b004e 20%,
+    #42006f 30%,
+    #1b004e 40%,
+    #42006f 50%,
+    #1b004e 60%,
+    #42006f 70%,
+    #1b004e 80%,
+    #42006f 90%,
+    #1b004e 100%
+  );
+  /* background: repeating-radial-gradient(
+    circle,
+    #42006f 0,
+    #42006f 10px,
+    #1b004e 10px,
+    #1b004e 20px
+  ); */
   color: #42006f;
   text-align: center;
-  padding: 20px 0px;
-  margin: 0;
 }
 
 nav {
-  background-color: #000;
-  background: radial-gradient(circle, #000 70%, rgba(0, 0, 0, 0) 100%);
+  background: radial-gradient(circle, #000 70%, transparent 100%);
   padding: 0.5em;
   position: -webkit-sticky;
   position: sticky;
@@ -36,7 +52,7 @@ nav a {
   display: block;
   text-align: center;
   transition: background-color 0.5s;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 nav a:hover {
@@ -51,20 +67,23 @@ img {
 h1 {
   font-family: "Georgia", serif;
   font-size: 2em;
-  text-align: center;
+  margin: .8em .8em;
 }
 
 h2 {
   text-transform: uppercase;
-  letter-spacing: 2px;
+  /* letter-spacing: 2px; */
   font-size: 1.5em;
+  margin: 1em 1em;
 }
 
 .event {
   width: 80vw;
   max-width: 700px;
-  margin: 0px auto;
-  padding: 0px 0px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3em;
+  padding: 20px;
   border-radius: 15px;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
   color: #fff;
@@ -101,10 +120,6 @@ h2 {
   /* font-size: 1.1em; */
 }
 
-.buy-tickets {
-  text-align: center; /* center the button horizontally */
-  margin-top: 20px; /* give spacing above the button */
-}
 
 .buy-tickets a {
   display: inline-block; /* allows width, height, and margin to work properly */
@@ -113,9 +128,8 @@ h2 {
   color: #fff;
   text-decoration: none; /* remove underline */
   border-radius: 10px;
-  transition: background-color 0.3s;
+  transition: background-color 0.5s;
 }
-
 .event1 .buy-tickets a:hover {
   background-color: #d00; /* hover color */
 }
@@ -131,10 +145,5 @@ h2 {
 
   nav ul {
     flex-direction: column;
-    justify-content: space-evenly;
-  }
-
-  nav a {
-    padding: 10px;
   }
 }
