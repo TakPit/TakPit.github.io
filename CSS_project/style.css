@@ -1,0 +1,265 @@
+body {
+  font-family: "Jura", sans-serif; /* "Georgia", serif; "Arial", sans-serif */
+  font-size: 1.2em;
+  /* background: radial-gradient(circle, #42006f, #000); #0a002b */
+  background: linear-gradient(
+    #070013 0%,
+    #200035 10%,
+    /* #1b004e 0%,
+    #42006f 10%, */ 
+    #070013 20%,
+    #200035 30%,
+    #070013 40%,
+    #200035 50%,
+    #070013 60%,
+    #200035 70%,
+    #070013 80%,
+    #200035 90%,
+    #070013 100%
+  );
+  /* background: repeating-radial-gradient(
+    circle,
+    #42006f 0,
+    #42006f 10px,
+    #1b004e 10px,
+    #1b004e 20px
+  ); */
+  color: #fff /* #42006f */;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background-image: url('sky.jpg');
+  background-size: cover;
+  background-position: center center;   /* centers the image within the div */
+}
+
+.logo h1 {
+  font-size: 2em;
+  /* margin: 0.8em 0.8em; */
+  text-shadow:
+    /* 0 0 5px #fff,    /* Small radius */ 
+    0 0 10px #fff; /* Medium radius */
+   /* 0 0 20px #fff;   /* Larger radius */
+  flex-grow: 1;
+  /* border: white 2px solid; for clarity */
+  max-width: 10em;
+}
+.logo img {
+  max-height: 3.5em;
+  width: auto;       /* auto width ensures the aspect ratio is preserved */
+  height: auto; 
+  margin: 1em;
+  /* flex-grow: 1; */
+
+}
+#p1 {
+  position: relative;
+  animation-name: animationp1;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes animationp1 {
+  0% {
+    top: -0.7em;
+  }
+  50% {
+    top: 0.7em;
+  } 
+  100% {
+    top: -0.7em;
+  }
+}
+#p2 {
+  position: relative;
+  animation-name: animationp2;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes animationp2 {
+  0% {
+    top: 0.7em;
+  }
+  50% {
+    top: -0.7em;
+  } 
+  100% {
+    top: 0.7em;
+  }
+}
+
+
+nav {
+  background: radial-gradient(circle, #000 70%, transparent 100%);
+  padding: 0.5em;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  /* border-radius: 50px; */
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.8em 1.5em;
+  display: block;
+  text-align: center;
+  transition: background-color 0.5s;
+  border-radius: 10px;
+}
+
+nav a:hover {
+  background-color: #42006f;
+}
+
+
+h2 {
+  text-transform: uppercase;
+  /* letter-spacing: 2px; */
+  font-size: 2em;
+  margin: 1em 1em;
+  /* color: aqua; */
+}
+
+.event {
+  width: 80vw;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3em;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-family: "Space Grotesk", sans-serif;
+  background: transparent;
+  /* background: linear-gradient(135deg, #1b004e, #42006f); */
+  border: 2px solid #FBB20D; /* #d00 */
+}
+
+.event h3 {
+  color: #FBB20D;
+  font-family: "Jura", sans-serif; /* "Georgia", serif; "Arial", sans-serif */
+  text-transform: uppercase;
+}
+
+
+.date,
+.conductor,
+.location,
+.repertoire {
+  font-style: italic;
+  /* opacity: 0.8; */
+}
+.date strong,
+.conductor strong,
+.location strong,
+.repertoire strong {
+  font-style: italic;
+  color: aqua;
+}
+
+.description {
+  margin-top: 10px;
+}
+
+.buy-tickets a {
+  display: inline-block; /* allows width, height, and margin to work properly */
+  padding: 0.8em 1.5em;
+  background-color: transparent; /* button background color */
+  color: #fff;
+  text-decoration: none; /* remove underline */
+  border-radius: 10px;
+  transition: background-color 0.5s;
+}
+.event .buy-tickets a:hover {
+  background-color: #FBB20D; /* hover color */
+}
+
+
+
+
+/* A fixed, circular “back to top” button */
+#backToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  text-align: center;
+  line-height: 45px;
+  border: none;
+  border-radius: 50%;
+  background-color: #42006f;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  /* always visible in this version */
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  transition: background-color 0.5s;
+}
+#backToTop:hover {
+  background-color: #730aa7; /* hover color */
+}
+
+footer {
+  background: radial-gradient(circle, #000 70%, transparent 100%);
+  padding: 0.5em;
+  color: white;
+  text-align: center;
+}
+footer a, footer a:visited, footer a:hover, footer a:active {
+  color: #fff;       /* or whatever color you prefer */
+  text-decoration: none; /* optional, remove underline */
+}
+
+
+
+
+@media screen and (max-width: 400px) {
+  nav ul {
+    flex-direction: column;
+  }
+}
+
+/* DONE -- add footer */
+/* DONE -- add a back to the top button */
+/* DONE -- make events wider */
+/* DONE -- make links redicred onto itself */
+/* change color scheme for events (like yellow-lighblue-purple) but no more green-red bc seem to be selected arbitrarily: use color with purpose*/
+/* change font-styles to emphasize correct things
+   - find two fonts that look good together, one for headings and one for the event content
+   - check font lucida console (??) (check space grotesk)
+   - how to import custom fort: import a link to some google font page in style element of the head*/
+/* add animation maybe something glowing in the event box */
+/* make the name / logo of the orchestra cooler: 
+   - next to the logo put some little things like planets just hovering (animation) 
+   - some kind of gradient / shadow to it */
+/* figure out how to put a background image that does not move when scrolling */
+/* consider to put a vertical navbar at the left side to natigate concerts or like some kind of window that 4
+goes down showing the list of all concerts that I can click on and it takes me to the specific part of the 
+page where the event is also label the concerts with their name, not by number. Set a top and left parameter and then sticky */
+/* check out some semi-opaque box as a background for the text, like done in the navbar but uniformly semi-transparent */
