@@ -36,7 +36,8 @@ body {
 
 .logo h1 {
   font-size: 2em;
-  margin: 0; padding: 0em;
+  margin: 0em; padding: 0em;
+  margin-top: 0.2em;
   text-shadow: 0 0 10px #fff;
   max-width: 10em;
 }
@@ -232,7 +233,7 @@ footer a, footer a:visited, footer a:hover, footer a:active {
 
 
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
   nav ul {
     flex-direction: column;
   }
