@@ -3,10 +3,8 @@ body {
   font-size: 1.2em;
   /* background: radial-gradient(circle, #42006f, #000); #0a002b */
   background: linear-gradient(
-    #070013 0%,
-    #200035 10%,
-    /* #1b004e 0%,
-    #42006f 10%, */ 
+    #070013 0%, /* #1b004e 0%, */
+    #200035 10%, /* #42006f 10%, */
     #070013 20%,
     #200035 30%,
     #070013 40%,
@@ -40,62 +38,76 @@ body {
   background-image: url('sky.jpg');
   background-size: cover;
   background-position: center center;   /* centers the image within the div */
+  background-repeat: no-repeat;         /* prevents the image from repeating */
+  margin: 0; padding: 0;
+}
+
+.logo h1, .logo img {
+  border: white 2px solid;
 }
 
 .logo h1 {
   font-size: 2em;
-  /* margin: 0.8em 0.8em; */
+  margin: 0; padding: 0em;
   text-shadow:
-    /* 0 0 5px #fff,    /* Small radius */ 
-    0 0 10px #fff; /* Medium radius */
-   /* 0 0 20px #fff;   /* Larger radius */
-  flex-grow: 1;
-  /* border: white 2px solid; for clarity */
+  0 0 10px #fff; /* Medium radius */
   max-width: 10em;
 }
 .logo img {
   max-height: 3.5em;
-  width: auto;       /* auto width ensures the aspect ratio is preserved */
+  width: auto; /* auto width ensures the aspect ratio is preserved */
   height: auto; 
-  margin: 1em;
-  /* flex-grow: 1; */
+  margin: 0; padding: 2em 1em 2em 1em;
 
 }
 #p1 {
   position: relative;
   animation-name: animationp1;
   animation-duration: 5s;
-  animation-timing-function: ease-in-out;
+  animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
 @keyframes animationp1 {
   0% {
+    top: 0em;
+  }
+  25% {
     top: -0.7em;
   }
   50% {
+    top: 0em;
+  }
+  75% {
     top: 0.7em;
   } 
   100% {
-    top: -0.7em;
-  }
+    top: 0em;
+  } 
 }
+
 #p2 {
   position: relative;
   animation-name: animationp2;
   animation-duration: 5s;
-  animation-timing-function: ease-in-out;
+  animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
 @keyframes animationp2 {
   0% {
+    top: 0em;
+  }
+  25% {
     top: 0.7em;
   }
   50% {
+    top: 0em;
+  }
+  75% {
     top: -0.7em;
   } 
   100% {
-    top: 0.7em;
-  }
+    top: 0em;
+  } 
 }
 
 
@@ -239,9 +251,38 @@ footer a, footer a:visited, footer a:hover, footer a:active {
 
 
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   nav ul {
     flex-direction: column;
+  }
+
+  .logo {
+    flex-direction: column;
+  }
+
+  .logo h1 {
+    border: none;
+    margin: 0em; padding: 0em;
+  }
+
+  .logo img {
+    border: none;
+    margin: 0em; padding: 0.5em;
+  }
+
+  .logo h1, .logo img {
+    /* border: white 2px solid; */
+  }
+
+  #p1 {
+    position: relative;
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
+  }
+  #p2 {
+    position: relative;
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
   }
 }
 
