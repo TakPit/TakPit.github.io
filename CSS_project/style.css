@@ -232,7 +232,7 @@ footer a, footer a:visited, footer a:hover, footer a:active {
 
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 400px) {
   nav ul {
     flex-direction: column;
   }
