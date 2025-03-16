@@ -29,8 +29,8 @@ body {
   align-content: center;
   background-image: url('sky.jpg');
   background-size: cover;
-  background-position: center center;   /* centers the image within the div */
-  background-repeat: no-repeat;         /* prevents the image from repeating */
+  background-position: center center;
+  background-repeat: no-repeat;
   margin: 0; padding: 0;
 }
 
@@ -220,7 +220,7 @@ h2 {
 
 
 footer {
-  background: radial-gradient(circle, #000 70%, transparent 100%);
+  background: radial-gradient(circle, #000 65%, transparent 100%);
   padding: 0.5em;
   color: white;
   text-align: center;
