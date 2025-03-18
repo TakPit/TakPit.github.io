@@ -1,0 +1,45 @@
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.boxes  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 1em;
+    gap: 1em;
+    font-size: 2em;
+}
+
+#f1 {
+    width: 30vh;
+    height: 30vh;
+    background-color: white;
+    border: 1px solid black;
+
+    display: flex;              /* Make the container a flex container */
+    align-items: center;        /* Center items vertically */
+    justify-content: center; 
+
+}
+
+#f2 {
+    width: 30vh;
+    height: 30vh;
+    background-color: white;
+    border: 1px solid black;
+
+    display: flex;              /* Make the container a flex container */
+    align-items: center;        /* Center items vertically */
+    justify-content: center; 
+}
+
+.myfighter {
+    display: flex;              /* Make the container a flex container */
+    align-items: center;        /* Center items vertically */
+    justify-content: center; 
+}

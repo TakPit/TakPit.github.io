@@ -45,7 +45,11 @@
         content: "";
         position: absolute;
         inset: 0;
-        background-image: linear-gradient(to right, #070013 0%, #200035 100%); /* #6a11cb 0%, #2575fc */ 
+        background-image: linear-gradient(
+          to right,
+          #070013 0%,
+          #200035 100%
+        ); /* #6a11cb 0%, #2575fc */
         z-index: -1;
         border-radius: 0.75rem;
       }
