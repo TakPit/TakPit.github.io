@@ -12,10 +12,12 @@ function showfighter() {
     if (input === 'box1') {
         box1.style.backgroundColor = 'red'
         box2.removeAttribute("style")
+        document.getElementById("f2").innerHTML = "box2";
         fighter.textContent = 'Great! You chose box1, now click on it to disclose your fighter'
     } else if (input === 'box2') {
         box2.style.backgroundColor = 'blue'
         box1.removeAttribute("style")
+        document.getElementById("f1").innerHTML = "box1";
         fighter.textContent = 'Great! You chose box2, now click on it to disclose your fighter'
     } else {
         let buttondiv = document.querySelector(".button");
@@ -27,6 +29,8 @@ function showfighter() {
         // }
         box1.removeAttribute("style")
         box2.removeAttribute("style")
+        document.getElementById("f1").innerHTML = "box1";
+        document.getElementById("f2").innerHTML = "box2";
         fighter.textContent = "Write what's in either of the two boxes brother"
     }
 
@@ -40,13 +44,13 @@ function changeBackgroundToImage(box) {
         box.style.backgroundImage = "url('f1.jpg')";
         box.style.backgroundSize = 'cover';
         box.style.backgroundColor = '';
-        box.style.color = 'transparent'
+        document.getElementById("f1").innerHTML = "";
     }
     else if (box.style.backgroundColor === 'blue') {
         box.style.backgroundImage = "url('f2.jpg')";
         box.style.backgroundSize = 'cover';
         box.style.backgroundColor = '';
-        box.style.color = 'transparent'
+        document.getElementById("f2").innerHTML = "";
     }
     let fighter = document.querySelector("#myfighter");
     fighter.textContent = "Here's your fighter. Good luck brother"
