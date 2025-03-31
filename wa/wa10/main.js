@@ -13,7 +13,7 @@ function randomValueFromArray(array) {
 // 2. RAW TEXT STRINGS
 
 // const storyText = "It was 94 fahrenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but was not surprised — :insertx: weighs 300 pounds, and it was a hot day.";
-const storyText = "The sun blazed at 94 degrees Fahrenheit as :insertx: stepped outside to blaze even harder than how our beautiful star was. After swinging around for a while, they stumbled into :inserty:. Without hesitation, they :insertz:, producing the cheerful reaction of the entire CU Boulder student community. Bob, sipping his iced tea nearby, barely raised an eyebrow; after all, it was a Tuesday, and :insertx: always did stuff like this."
+const storyText = "The sun blazed at 94 degrees Fahrenheit as :insertx: stepped outside to blaze even harder than how our beautiful star was. After swinging around for a while, they stumbled into :inserty:. Without hesitation, they :insertz:, producing the cheerful reaction of the entire CU Boulder student community. Bob, sipping the usual 300 pounds cup of iced tea nearby, barely raised an eyebrow; after all, it was a Tuesday, and :insertx: always did stuff like this."
 
 const insertX = [
     "Frodo Baggins",
@@ -62,10 +62,10 @@ function result() {
     // 5.
     if (document.getElementById("uk").checked) {
         const weight = Math.round(300 * 0.0714286) + ' stone';
-        const temperature = Math.round((94 - 32) * 5 / 9) + ' centigrade';
+        const temperature = Math.round((94 - 32) * 5 / 9) + ' degrees centigrade';
 
         newStory = newStory.replaceAll('300 pounds', weight);
-        newStory = newStory.replaceAll('94 fahrenheit', temperature);
+        newStory = newStory.replaceAll('94 degrees Fahrenheit', temperature);
     }
 
     // 6.
