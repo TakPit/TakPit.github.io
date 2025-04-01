@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="heading">Hi</h1>
+
+    <script>
+        const header = document.querySelector('.heading');
+        // header.addEventListener('click', changeColor("red"));
+        header.addEventListener('click', function(color) { // Anonymous function to handle the click event
+            changeColor("red"); // Calls the changeColor function with "red" as an argument
+            // only exists in the moment when the event happens and then goes away, cannot be reused 
+        });
+        
+        // Non anonymous function to change the text content of the header
+        function changeColor(color) {
+            header.textContent = color; 
+            }
+
+        var x = 0;
+        
+        for (let i=0; i<10; i++) {
+            
+            if (x === 2) {
+                console.log("x is 2");
+                x = 0;
+            }
+            else if (x === 1) { 
+                console.log("x is 1");
+                x = 2;
+            } 
+            else {
+                console.log("x is 0");
+                x = 1;
+            }
+        
+        }
+
+        let y = 10;
+        while (y > 0) { // Loop that will run while y is greater than 0
+            console.log("Current value of y: " + y); // Print the current value of y
+            y--; // same as y-=1; Decrement y by 1 in each iteration
+        }
+        
+        // Print a message after the loop ends to make sure
+        console.log("Loop has ended, final value of y: " + y); 
+
+    </script>
+</body>
+</html>
