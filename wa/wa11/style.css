@@ -1,0 +1,74 @@
+h1 {
+  font-family: helvetica, arial, sans-serif;
+  text-align: center;
+  color: #209723;
+}
+
+body {
+  width: 1200px;
+  margin: 0 auto;
+  background-color: black;
+  color: #209723;
+}
+
+.full-img {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  max-height: 100%;
+  width: 1200px;
+  height: 750px;
+  object-fit: cover;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: 6px solid #209723;
+  background-color: black;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1200px;
+  height: 750px;
+}
+
+button {
+  border: 0;
+  background: #209723;
+  color: black;
+  text-shadow: 1px 1px 1px white;
+  border: 1px solid #209723;
+  position: absolute;
+  cursor: pointer;
+  top: 2px;
+  left: 2px;
+  padding: 10px 20px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: black;
+  color: #209723;
+}
+
+
+
+.thumb-bar img {
+  display: block;
+  width: 20%;
+  max-height: 140px;
+  object-fit: cover;
+  overflow: hidden;
+  float: left;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.thumb-bar img:hover {
+  transform: scale(1.1);
+  border-color: black;
+}
