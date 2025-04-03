@@ -5,7 +5,7 @@ h1 {
 }
 
 body {
-  width: 1200px;
+  width: 700px;
   margin: 0 auto;
   background-color: black;
   color: #209723;
@@ -18,8 +18,8 @@ body {
   align-items: center;
   max-width: 100%;
   max-height: 100%;
-  width: 1200px;
-  height: 750px;
+  width: 700px;
+  height: 400px;
   object-fit: cover;
   overflow: hidden;
   box-sizing: border-box;
@@ -27,12 +27,19 @@ body {
   background-color: black;
 }
 
+.full-img img {
+  width: 100%; /* Ensure the image scales to fit the width of the container */
+  height: 100%; /* Ensure the image scales to fit the height of the container */
+  object-fit: contain; /* Scale the image to fit within the container while maintaining aspect ratio */
+  overflow: hidden; /* Prevent any overflow */
+}
+
 .overlay {
   position: absolute;
   top: 0;
   left: 0;
-  width: 1200px;
-  height: 750px;
+  width: 700px;
+  height: 400px;
 }
 
 button {
@@ -55,12 +62,23 @@ button:hover {
   color: #209723;
 }
 
+.alt-text {
+  font-size: 1.5rem;
+  color: #209723;
+  text-align: center;
+}
 
+
+.thumb-bar {
+  margin-top: 20px;
+  justify-content: center;
+  gap: 10px;
+}
 
 .thumb-bar img {
   display: block;
   width: 20%;
-  max-height: 140px;
+  max-height: 80px;
   object-fit: cover;
   overflow: hidden;
   float: left;
