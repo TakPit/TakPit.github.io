@@ -35,16 +35,19 @@
     <footer>
       <p>
         In my extension I changed the Triva API into one generating event
-        happened on a specific date. The endpoint used is
-        'http://numbersapi.com/random/year?json'. The original text includes
-        both the date and the event, and I used the date as the answer. In the
-        sentence displayed, I changed the date into "...". Then the user has to
-        input the guess and submit it by clicking the "Submit your guess"
-        button. If the guess is correct, the answer is displayed, otherwise the
-        user is invited to either try again or look at the answer clicking the
-        button "Show me the answer!". I changed the styling to mimic the one of
-        my CSS project. I also implemented a media query to make the app
-        responsive to changes in width.
+        happened on a specific date, where the year has to be guessed by the
+        user. I used API Ninjas, which returns an event and the year in which it
+        happened. The endpoint requires a year as a parameter, so at every
+        request a random number is generated so that the final endpoint is
+        `https://api.api-ninjas.com/v1/historicalevents?year=${randomYear}`. The
+        original text includes both the date and the event, and I used the date
+        as the answer, while removing it from the the sentence displayed. Then
+        the user has to input the guess and submit it by clicking the "Submit
+        your guess" button. If the guess is correct, the answer is displayed,
+        otherwise the user is invited to either try again or look at the answer
+        clicking the button "Show me the answer!". I changed the styling to
+        mimic the one of my CSS project. I also implemented a media query to
+        make the app responsive to changes in width.
       </p>
     </footer>
     <script src="assignment12.js"></script>

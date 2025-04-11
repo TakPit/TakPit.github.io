@@ -1,49 +1,63 @@
-// Button event listeners
 var newQuoteButton = document.querySelector('#js-new-quote').addEventListener('click', getQuote);
 var answerButton = document.querySelector('#js-tweet').addEventListener('click', displayAnswer);
 var submitGuessButton = document.querySelector('#js-submit-guess').addEventListener('click', checkGuess);
 
-// Input and output elements
 var guessInput = document.querySelector('#js-guess-input');
 var guessResult = document.querySelector('#js-result-text');
 
-var apiEndpoint = 'http://numbersapi.com/random/year?json';
+const apiKey = 'rFTtwgFp0feaR13DgrYX7w==etcwezdPEqcTBzVT';
+
 
 let current = {
-    question: "",
-    answer: ""
+    text: "",
+    year: ""
 };
 
-// 🔄 Proxy-enabled fetch function
-async function fetchViaProxy(url) {
-    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    try {
-        const response = await fetch(proxyUrl + url);
-        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-        return await response.json();
-    } catch (error) {
-        console.error('Fetch failed via proxy:', error);
-        throw error;
-    }
-}
 
 async function getQuote() {
+    const randomYear = Math.floor(Math.random() * (2020 - 1000 + 1)) + 1000;
+    const apiEndpoint = `https://api.api-ninjas.com/v1/historicalevents?year=${randomYear}`;
+
     const answerText = document.querySelector('#js-answer-text');
     answerText.textContent = "";
     guessResult.textContent = "";
 
     try {
-        const json = await fetchViaProxy(apiEndpoint);
-        current.text = json.text;
-        current.number = json.number;
+        const response = await fetch(apiEndpoint, {
+            headers: {
+                'X-Api-Key': apiKey
+            }
+        });
 
-        const textWithoutNumber = current.text.replace(/^\d+\s/, '... ');
-        displayQuote(textWithoutNumber);
+        if (!response.ok) {
+            throw Error('Network response was not ok. Status: ' + response.statusText);
+        }
+
+        const data = await response.json();
+        if (!data.length) {
+            console.warn(`No events found for year ${randomYear}. Retrying...`);
+            return getQuote();
+        }
+
+        const event = data[0];
+        const year = event.year;
+        const sentence = event.event;
+
+        const regex = new RegExp(`\\b${year}\\b`);
+        const question = sentence.replace(regex, '...');
+
+        current.text = question;
+        current.year = year;
+
+        displayQuote(question);
+
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
         alert('There was a problem fetching the quote. Please try again later.');
     }
 }
+
+
 
 function displayQuote(quote) {
     const quoteText = document.querySelector('#js-quote-text');
@@ -52,7 +66,7 @@ function displayQuote(quote) {
 
 function displayAnswer() {
     const answerText = document.querySelector('#js-answer-text');
-    answerText.textContent = current.number;
+    answerText.textContent = current.year;
 }
 
 function checkGuess() {
@@ -61,7 +75,7 @@ function checkGuess() {
     if (userGuess === "") {
         guessResult.textContent = "Please enter a guess!";
         return;
-    } else if (parseInt(userGuess) === current.number) {
+    } else if (parseInt(userGuess) === parseInt(current.year)) {
         guessResult.textContent = `Great job! ${userGuess} is the correct year!`;
     } else {
         guessResult.textContent = 'Incorrect. Try again or click "Show me the answer!"';
@@ -70,4 +84,4 @@ function checkGuess() {
     guessInput.value = "";
 }
 
-getQuote(); // initial quote on page load
+getQuote();
