@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assignment12.css">
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Jura:wght@300..700&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=Space+Grotesk:wght@300..700&display=swap");
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <header>Weird Years Trivia</header>
+      <section class="quotes">
+        <div class="quote-text" id="js-quote-text"></div>
+        <input
+          type="text"
+          id="js-guess-input"
+          placeholder="Enter your guess here">
+        <button type="button" id="js-submit-guess">Submit your guess</button>
+        <div class="quote-text" id="js-result-text"></div>
+        <div class="quote-text" id="js-answer-text"></div>
+      </section>
+      <section class="controls">
+        <button type="button" id="js-new-quote" class="new-quote button">
+          Generate a new bit of trivia!
+        </button>
+        <button type="button" id="js-tweet" class="twitter button">
+          Show me the answer!
+        </button>
+      </section>
+    </div>
+    <footer>
+      <p>
+        In my extension I changed the Triva API into one generating event
+        happened on a specific date. The endpoint used is
+        'http://numbersapi.com/random/year?json'. The original text includes
+        both the date and the event, and I used the date as the answer. In the
+        sentence displayed, I changed the date into "...". Then the user has to
+        input the guess and submit it by clicking the "Submit your guess"
+        button. If the guess is correct, the answer is displayed, otherwise the
+        user is invited to either try again or look at the answer clicking the
+        button "Show me the answer!". I changed the styling to mimic the one of
+        my CSS project. I also implemented a media query to make the app
+        responsive to changes in width.
+      </p>
+    </footer>
+    <script src="assignment12.js"></script>
+  </body>
+</html>
