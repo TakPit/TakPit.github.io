@@ -1,10 +1,10 @@
+// Button event listeners
 var newQuoteButton = document.querySelector('#js-new-quote').addEventListener('click', getQuote);
 var answerButton = document.querySelector('#js-tweet').addEventListener('click', displayAnswer);
-// Submit guess button
 var submitGuessButton = document.querySelector('#js-submit-guess').addEventListener('click', checkGuess);
-// Submission input field
+
+// Input and output elements
 var guessInput = document.querySelector('#js-guess-input');
-// Result text field
 var guessResult = document.querySelector('#js-result-text');
 
 var apiEndpoint = 'http://numbersapi.com/random/year?json';
@@ -12,49 +12,50 @@ var apiEndpoint = 'http://numbersapi.com/random/year?json';
 let current = {
     question: "",
     answer: ""
+};
+
+// 🔄 Proxy-enabled fetch function
+async function fetchViaProxy(url) {
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    try {
+        const response = await fetch(proxyUrl + url);
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        return await response.json();
+    } catch (error) {
+        console.error('Fetch failed via proxy:', error);
+        throw error;
+    }
 }
 
-async function getQuote() { // async function to fetch data from the API. Needed to be async to use await.
-
+async function getQuote() {
     const answerText = document.querySelector('#js-answer-text');
     answerText.textContent = "";
     guessResult.textContent = "";
 
-
     try {
-        const response = await fetch(apiEndpoint);
-
-        if (!response.ok) {
-            throw Error('Network response was not ok. Status: ' + response.statusText);
-        }
-
-        const json = await response.json();
+        const json = await fetchViaProxy(apiEndpoint);
         current.text = json.text;
         current.number = json.number;
 
-        const textWithoutNumber = current.text.replace(/^\d+\s/, '... '); // Removes the leading number and space
+        const textWithoutNumber = current.text.replace(/^\d+\s/, '... ');
         displayQuote(textWithoutNumber);
-    }
-
-    catch (error) {
+    } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
-        alert('There was a problem with the fetch operation:', error);
+        alert('There was a problem fetching the quote. Please try again later.');
     }
 }
 
 function displayQuote(quote) {
     const quoteText = document.querySelector('#js-quote-text');
-    quoteText.textContent = quote
+    quoteText.textContent = quote;
 }
 
 function displayAnswer() {
     const answerText = document.querySelector('#js-answer-text');
-    answerText.textContent = current.number
+    answerText.textContent = current.number;
 }
 
-
 function checkGuess() {
-
     const userGuess = guessInput.value.trim();
 
     if (userGuess === "") {
@@ -66,12 +67,7 @@ function checkGuess() {
         guessResult.textContent = 'Incorrect. Try again or click "Show me the answer!"';
     }
 
-    // Clear the input field after submission
     guessInput.value = "";
 }
 
-//
-
-
-
-getQuote();
+getQuote(); // initial quote on page load
