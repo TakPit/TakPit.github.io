@@ -1,5 +1,5 @@
 var newQuoteButton = document.querySelector('#js-new-quote').addEventListener('click', getQuote);
-var answerButton = document.querySelector('#js-tweet').addEventListener('click', displayAnswer);
+var answerButton = document.querySelector('#js-show-answer').addEventListener('click', displayAnswer);
 var submitGuessButton = document.querySelector('#js-submit-guess').addEventListener('click', checkGuess);
 
 var guessInput = document.querySelector('#js-guess-input');
