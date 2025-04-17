@@ -1,0 +1,45 @@
+/* CSS */
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #111;
+}
+
+.container {
+  position: relative;
+}
+​
+.text {
+
+  filter: url(#sticker);
+  color: #999;
+  font-size: 4rem;
+  font-weight: bold;
+
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  outline: none;
+}
+​
+.text:focus {
+  outline: none;
+}
+
+
+.text {
+  filter: url(#sticker);
+  color: #999;
+  font-size: 4rem;
+  font-weight: bold;
+
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  outline: none;
+}
+
+.text:focus {
+  outline: none;
+}

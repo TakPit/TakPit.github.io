@@ -1,0 +1,33 @@
+<!-- HTML -->
+<div class="container">
+  <div class="text" contenteditable="true" spellcheck="false">
+    Edit this text
+  </div>
+</div>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+	<defs>
+		<filter id="sticker">
+			<feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="1" seed="14" stitchTiles="noStitch" result="feTurbulence-5a5b7d7d"></feTurbulence>
+			<feColorMatrix in="feTurbulence-5a5b7d7d" type="saturate" values="30" result="feColorMatrix-d8c90d8d"></feColorMatrix>
+			<feMorphology in="SourceGraphic" operator="dilate" radius="10" result="feMorphology-4bab51fe"></feMorphology>
+			<feFlood x="0" y="0" width="100%" height="100%" flood-color="#000000" flood-opacity="1" result="feFlood-093b8ece"></feFlood>
+			<feGaussianBlur in="SourceGraphic" stdDeviation="3" edgeMode="none" result="feGaussianBlur-7183b890"></feGaussianBlur>
+			<feOffset in="feColorMatrix-d8c90d8d" dx="0" dy="0" result="feOffset-e5a9ff0b"></feOffset>
+			<feComposite in="feFlood-093b8ece" in2="feMorphology-4bab51fe" operator="in" result="feComposite-113a2059"></feComposite>
+			<feDiffuseLighting in="feGaussianBlur-7183b890" surfaceScale="10" diffuseConstant="1" lighting-color="#ffffff" result="feDiffuseLighting-c4775d48">
+				<fePointLight id="light" x="100" y="50" z="20"></fePointLight>
+			</feDiffuseLighting>
+			<feComposite in="feOffset-e5a9ff0b" in2="SourceGraphic" operator="atop" result="feComposite-d68d084b"></feComposite>
+			<feComposite in="feComposite-d68d084b" in2="feComposite-113a2059" operator="atop" result="feComposite-c3201f90"></feComposite>
+			<feTurbulence type="fractalNoise" baseFrequency="3" numOctaves="1" seed="0" stitchTiles="noStitch" result="feTurbulence-233ba97b"></feTurbulence>
+			<feComposite in="feDiffuseLighting-c4775d48" in2="feComposite-c3201f90" operator="in" result="feComposite-61c70d31"></feComposite>
+			<feBlend in="feComposite-61c70d31" in2="feComposite-c3201f90" mode="color-dodge" result="feBlend-d8c03267"></feBlend>
+			<feColorMatrix in="feTurbulence-233ba97b" type="matrix" values="1    0    0    0    0   
+			                                                                1    0    0    0    0   
+			                                                                1    0    0    0    0   
+			                                                                0.03 0    0    0    0" result="feColorMatrix-99b3eaf2"></feColorMatrix>
+			<feComposite in="feColorMatrix-99b3eaf2" in2="feBlend-d8c03267" operator="atop"></feComposite>
+		</filter>
+	</defs>
+</svg>
