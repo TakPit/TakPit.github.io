@@ -4,10 +4,7 @@ body {
     flex-direction: column;
     align-items: center;
     font-family: Roboto, sans-serif;
-
-    /* background-image: url('https://wsdg.com/wp-content/uploads/University-of-Colorado-ATLAS-Alliance-for-Technology-Learning-and-Society-5.jpg'); */
-    /* background-image: url('https://images.singletracks.com/blog/wp-content/uploads/2012/08/IMG_3797-0-orig.jpg'); */
-    background-image: url('InShot_20250429_121800958.jpg');
+    background-image: url('anthony_background.jpg');
     background-repeat: no-repeat; /* Prevent tiling */
     background-size: cover;       /* Scale image to cover the whole body */
     background-position: top center; /* Center the image */
