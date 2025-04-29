@@ -2,7 +2,6 @@
 const gameArea = document.getElementById('game-area');
 const player = document.getElementById('player');
 const phoneDisplay = document.getElementById('phone-display');
-const messageArea = document.getElementById('message-area');
 const restartButton = document.getElementById('restart-button');
 
 
@@ -45,7 +44,6 @@ function initializeGame() {
     // Clear previous elements and state
     player.style.top = `${playerY}px`;
     phoneDisplay.textContent = "Entered: ";
-    messageArea.style.display = "none";
     // restartButton.style.display = 'none'; // comment out to make it visible initially
 
     // Remove all existing obstacle elements from DOM
@@ -60,7 +58,7 @@ function initializeGame() {
         cancelAnimationFrame(gameLoopId);
     }
 
-    createPauseMessage("Let's get started!", isfirstTime = true);
+    createPauseMessage("Let's get started!", specialCase = 'first');
 
     // Start the game loop
     gameLoopId = requestAnimationFrame(gameLoop);
@@ -156,7 +154,7 @@ function createExplosion(x, y) {
 
 
 // --- Function to Create Scrolling Pause Message ---
-function createPauseMessage(text, isfirstTime = false) {
+function createPauseMessage(text, specialCase = "") {
 
     const messageElement = document.createElement('div');
     messageElement.classList.add('pause-message');
@@ -171,10 +169,14 @@ function createPauseMessage(text, isfirstTime = false) {
     messageElement.style.top = `${gameAreaHeight / 2 - 15}px`; // Center vertically 
     messageElement.style.textAlign = 'center'; 
     
-    messageElement.style.right = `-150px`; // Start off-screen right to fit the gap between obstacles
-    if (isfirstTime) {
-        // If this is the first time, we can set a different style or position
+    if (specialCase === 'first') {
+        // If this is the first message it has to be displayed to the left of the obstacle
         messageElement.style.right = '100px';
+    } else if (specialCase === 'last') {
+        // If this is the last message it's closer to the obstacle
+        messageElement.style.right = '40px';
+    } else {
+        messageElement.style.right = `-150px`; 
     }
 
     // We'll use a data attribute to mark it
@@ -273,16 +275,16 @@ function gameLoop() {
                     // --- End Explosion ---
 
                     if (generatedObstacleCount === 2) {
-                        enteredPhoneNumber = '('; // Reset on first obstacle
+                        enteredPhoneNumber = '('; // Start area code with opening parenthesis
                     }    
                     enteredPhoneNumber += numberValue;
                     if (enteredPhoneNumber.length === 4) {
                         enteredPhoneNumber += ') '; // Add closing parenthesis after 3rd digit
-                        createPauseMessage("Congratulations!\nYou entered the area code!"); // Or your desired text
+                        createPauseMessage("Congratulations!\nYou entered the area code!");
                     }    
                     if (enteredPhoneNumber.length === 9) {
                         enteredPhoneNumber += '-'; // Add dash after 6th digit
-                        createPauseMessage("Come on you entered the prefix!\nYou can do it!"); // Or your desired text
+                        createPauseMessage("Come on you entered the prefix!\nYou can do it!");
                     }    
                     phoneDisplay.textContent = `Entered: ${enteredPhoneNumber}`;
                     obstacleSet.dataset.scored = 'true'; // Mark set as scored    
@@ -294,10 +296,8 @@ function gameLoop() {
                     // Check if game should end
                     if (enteredPhoneNumber.length >= maxDigits) {
                         isGameOver = true;
-                        messageArea.style.display = 'block'; // Show message area
-                        messageArea.textContent = "Phone number complete! (Maybe?)";
+                        createPauseMessage("Phone number\ncomplete!\n(Maybe?)", specialCase = 'last');
                         // restartButton.style.display = 'block'; // Show restart button (comment out if you want it hidden initially)
-                        // No need to break here, let the loop finish naturally
                     }
                 }
             }
