@@ -10,12 +10,11 @@ const restartButton = document.getElementById('restart-button');
 const gravity = 0.5;
 const jumpStrength = -8;
 const obstacleSpeed = 2;
-// const blockHeight = 45; // Must match CSS
 const blockWidth = 50; // Must match CSS
 const gameAreaHeight = gameArea.clientHeight;
 const gameAreaWidth = gameArea.clientWidth;
 const initialPlayerY = 200;
-const maxDigits = 14; // Define the target number of digits
+const maxDigits = 14; // number of digits of a phone number including formatting
 
 // --- Game State ---
 let playerY;
@@ -25,9 +24,8 @@ let obstacles; // Array to hold obstacle elements (containers)
 let frameCount;
 let isGameOver;
 let gameLoopId = null; // To store the requestAnimationFrame ID
-// NEW CODE
 let generatedObstacleCount; // Counter for total generated obstacles
-let lastGenerationFrame; // <<< ADD: Frame count when the last obstacle was generated
+let lastGenerationFrame; // Frame count when the last obstacle was generated
 // Calculate blockHeight dynamically
 const numberOfBlocks = 10; // 0 through 9
 const blockHeight = gameAreaHeight / numberOfBlocks; // Calculate height per block
@@ -40,16 +38,15 @@ function initializeGame() {
     obstacles = [];
     frameCount = 0;
     isGameOver = false;
-    // NEW CODE
     generatedObstacleCount = 0; // Initialize obstacle count
     // Initialize so the first obstacle generates after the default interval
-    lastGenerationFrame = -150; // <<< INITIALIZE (or 0, depends on exact timing desired)
+    lastGenerationFrame = -150; // or 0, depends on exact timing desired
 
     // Clear previous elements and state
     player.style.top = `${playerY}px`;
     phoneDisplay.textContent = "Entered: ";
     messageArea.style.display = "none";
-    // restartButton.style.display = 'none'; // Hide restart button (comment out if you want it visible initially)
+    // restartButton.style.display = 'none'; // comment out to make it visible initially
 
     // Remove all existing obstacle elements from DOM
     const existingObstacles = gameArea.querySelectorAll('.obstacle-container');
@@ -81,7 +78,8 @@ function createObstacleSet() {
     obstacleContainer.style.top = '0px';
     // Set the container height explicitly to match game area height
     obstacleContainer.style.height = `${gameAreaHeight}px`;
-    obstacleContainer.style.width = `${blockWidth}px`; // Set width too
+    // Set the container width to match the block width
+    obstacleContainer.style.width = `${blockWidth}px`;
     obstacleContainer.dataset.scored = 'false';
 
     const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -111,7 +109,6 @@ function createObstacleSet() {
 
 // --- Collision Detection ---
 function checkCollision(rect1, rect2) {
-    // Basic AABB collision detection
     return (
         rect1.left < rect2.right &&
         rect1.right > rect2.left &&
@@ -144,7 +141,7 @@ function createExplosion(x, y) {
         const finalX = x + Math.cos(angle) * distance;
         const finalY = y + Math.sin(angle) * distance;
 
-        // Use setTimeout to allow the element to be added to DOM before transition starts
+        // Allow the element to be added to DOM before transition starts
         setTimeout(() => {
             particle.style.transform = `translate(${finalX - x}px, ${finalY - y}px)`;
             particle.style.opacity = '0';
@@ -153,7 +150,7 @@ function createExplosion(x, y) {
         // Remove particle after animation finishes
         particle.addEventListener('transitionend', () => {
             particle.remove();
-        }, { once: true }); // Use 'once' for automatic listener removal
+        }, { once: true }); // automatic listener removal
     }
 }
 
@@ -162,27 +159,24 @@ function createExplosion(x, y) {
 function createPauseMessage(text, isfirstTime = false) {
 
     const messageElement = document.createElement('div');
-    messageElement.classList.add('pause-message'); // Add class for styling and identification
+    messageElement.classList.add('pause-message');
     messageElement.textContent = text;
 
     // --- Styling (Apply directly or via CSS class) ---
     messageElement.style.position = 'absolute';
-    messageElement.style.color = '#CFB87C'; // Example style
-    messageElement.style.fontSize = '24px'; // Example style
+    messageElement.style.color = '#CFB87C';
+    messageElement.style.fontSize = '24px';
     messageElement.style.fontWeight = 'bold';
     messageElement.style.whiteSpace = 'pre';
-    // messageElement.style.whiteSpace = 'nowrap'; // Prevent text wrapping
-    messageElement.style.top = `${gameAreaHeight / 2 - 15}px`; // Center vertically (adjust as needed)
+    messageElement.style.top = `${gameAreaHeight / 2 - 15}px`; // Center vertically 
     messageElement.style.textAlign = 'center'; 
-
-    // Estimate width based on text or set a fixed width if preferred
-    // This is tricky without rendering first, let's start it just off-screen right
-    messageElement.style.right = `-150px`; // Start off-screen right (adjust width estimate)
-
+    
+    messageElement.style.right = `-150px`; // Start off-screen right to fit the gap between obstacles
     if (isfirstTime) {
         // If this is the first time, we can set a different style or position
-        messageElement.style.right = '100px'; // Position at the top for first message
+        messageElement.style.right = '100px';
     }
+
     // We'll use a data attribute to mark it
     messageElement.dataset.isPauseMessage = 'true';
 
@@ -216,8 +210,6 @@ function gameLoop() {
         playerVelocityY = 0;
         // Optional: Implement game over on hitting ground if desired
         // isGameOver = true;
-        // messageArea.textContent = "Crashed!";
-        // restartButton.style.display = 'block';
     }
     player.style.top = `${playerY}px`;
 
@@ -245,14 +237,7 @@ function gameLoop() {
             // }
 
         }
-    } // End of obstacle generation check
-
-    // Generate more frequently initially, then maybe slow down?
-    // if (frameCount % 150 === 0) {
-    //     if (obstacles.length < 3) { // Limit concurrent obstacles
-    //         createObstacleSet();
-    //     }
-    // }
+    }
 
 
     // 4. Move and Check Obstacles
@@ -279,7 +264,6 @@ function gameLoop() {
                     collisionDetectedThisSet = true; // Mark collision happened
                     const numberValue = block.dataset.value;
                     
-                    
                     // --- Start Explosion ---
                     // Calculate center of the block relative to the gameArea
                     const gameAreaRect = gameArea.getBoundingClientRect();
@@ -287,7 +271,6 @@ function gameLoop() {
                     const blockCenterY = blockRect.top - gameAreaRect.top + blockRect.height / 2;
                     createExplosion(blockCenterX, blockCenterY); // Trigger explosion
                     // --- End Explosion ---
-                    
 
                     if (generatedObstacleCount === 2) {
                         enteredPhoneNumber = '('; // Reset on first obstacle
@@ -305,15 +288,8 @@ function gameLoop() {
                     obstacleSet.dataset.scored = 'true'; // Mark set as scored    
                     
                     
-
-                    // Flash effect
                     block.style.opacity = '0'; // Fade out quickly
                     block.style.pointerEvents = 'none'; // Prevent re-collision
-
-                    // block.style.backgroundColor = 'transparent'; // Reset color
-                    // block.textContent = "";
-                    // block.style.border = '0px solid transparent'; // Remove border
-                    // setTimeout(() => { block.style.backgroundColor = 'green'; }, 200);
 
                     // Check if game should end
                     if (enteredPhoneNumber.length >= maxDigits) {

@@ -17,28 +17,33 @@ h1 {
     font-family: "Press Start 2P", system-ui;
 }
 
+/* everything but the titles is in a flexbox with row direction*/
+#input-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+/* frame on the left with the game */
 #game-area {
     width: 400px;
-    max-width: 95%; /* Make it responsive */
     height: 500px;
     border: 1px solid black;
     overflow: hidden;
     position: relative;
     background-color: #f0f0f0;
-    margin-top: 10px; /* Space below display */
 }
 
 #player {
     width: 19px;
     height: 45px;
-    object-fit: contain; /* Scales image down to fit within bounds */
-    object-fit: cover; /* Scales image up/down to cover bounds, may crop */
-    /* background-color: blue; */
-    /* border-radius: 50%; */
+    object-fit: contain; 
+    object-fit: cover; 
     position: absolute;
-    left: 50px;
+    left: 50px; /* Initial position */
     top: 200px; /* Initial position */
-    z-index: 10; /* Ensure player is above obstacles */
+    z-index: 10;
     user-select: none; /* Prevent text selection highlighting */
 }
 
@@ -80,7 +85,7 @@ h1 {
     background-color: #fff;
     min-height: 30px;
     width: 400px; /* Match game area */
-    max-width: 95%; /* Make it responsive */
+    max-width: 95%;
     box-sizing: border-box;
 }
 
@@ -106,13 +111,7 @@ h1 {
     /* display: none; Comment out to hide it initially */
 }
 
-#input-area {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-}
-
+/* where all the text on the right is */
 #text-area {
     display: flex;
     justify-content: center;
@@ -120,14 +119,15 @@ h1 {
     flex-direction: column;
 }
 
+/* explostion particles */
 .particle {
-    position: absolute; /* Position relative to gameArea */
-    width: 5px;         /* Small size */
+    position: absolute; 
+    width: 5px;         
     height: 5px;
-    background-color: red; /* Explosion color */
-    border-radius: 50%;  /* Make them round */
-    pointer-events: none; /* Don't let them interfere with clicks */
-    z-index: 20;        /* Ensure they appear above other elements */
+    background-color: red; 
+    border-radius: 50%;  
+    pointer-events: none; /* so they dont't interfere with clicks */
+    z-index: 20;
     opacity: 1;
-    transition: transform 0.5s ease-out, opacity 0.5s ease-out; /* For fading and moving */
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
   }
