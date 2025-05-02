@@ -9,7 +9,7 @@ const restartButton = document.getElementById('restart-button');
 const gravity = 0.5;
 const jumpStrength = -8;
 const obstacleSpeed = 2;
-const blockWidth = 50; // Must match CSS
+const blockWidth = 50; // to match CSS
 const gameAreaHeight = gameArea.clientHeight;
 const gameAreaWidth = gameArea.clientWidth;
 const initialPlayerY = 200;
@@ -23,11 +23,47 @@ let obstacles; // Array to hold obstacle elements (containers)
 let frameCount;
 let isGameOver;
 let gameLoopId = null; // To store the requestAnimationFrame ID
-let generatedObstacleCount; // Counter for total generated obstacles
-let lastGenerationFrame; // Frame count when the last obstacle was generated
+let generatedObstacleCount; 
+let lastGenerationFrame;
 // Calculate blockHeight dynamically
-const numberOfBlocks = 10; // 0 through 9
-const blockHeight = gameAreaHeight / numberOfBlocks; // Calculate height per block
+const numberOfBlocks = 10;
+const blockHeight = gameAreaHeight / numberOfBlocks;
+
+// --- List of area codes ---
+const areaCodes = [
+    "201", "202", "203", "205", "206", "207", "208", "209", "210", "212", "213",
+    "214", "215", "216", "217", "218", "219", "220", "223", "224", "225", "227",
+    "228", "229", "231", "234", "235", "239", "240", "248", "251", "252", "253",
+    "254", "256", "260", "262", "267", "269", "270", "272", "274", "276", "279",
+    "281", "283", "301", "302", "303", "304", "305", "307", "308", "309", "310",
+    "312", "313", "314", "315", "316", "317", "318", "319", "320", "321", "323",
+    "325", "326", "327", "330", "331", "332", "334", "336", "337", "339", "340", "341",
+    "346", "347", "351", "352", "360", "361", "363", "364", "369", "380", "385",
+    "386", "401", "402", "404", "405", "406", "407", "408", "409", "410", "412",
+    "413", "414", "415", "417", "419", "423", "424", "425", "430", "432", "434",
+    "435", "437", "440", "442", "443", "445", "447", "448", "458", "463", "464",
+    "469", "470", "475", "478", "479", "480", "484", "500", "501", "502", "503", "504",
+    "505", "507", "508", "509", "510", "512", "513", "515", "516", "517", "518",
+    "520", "521", "522", "530", "531", "533", "534", "539", "540", "541", "544", "551", "559", "561",
+    "562", "563", "564", "566", "567", "570", "571", "573", "574", "575", "577", "580", "585",
+    "586", "588", "600", "601", "602", "603", "605", "606", "607", "608", "609", "610", "612",
+    "614", "615", "616", "617", "618", "619", "620", "622", "623", "626", "628", "629",
+    "630", "631", "636", "640", "641", "646", "650", "651", "657", "660", "661",
+    "662", "667", "669", "670", "671", "678", "680", "681", "682", "684", "689", "701", "702", "703",
+    "704", "706", "707", "708", "712", "713", "714", "715", "716", "717", "718",
+    "719", "720", "724", "725", "727", "730", "731", "732", "734", "737", "740",
+    "743", "747", "754", "757", "760", "762", "763", "764", "765", "769", "770",
+    "772", "773", "774", "775", "779", "781", "785", "786", "787", "801", "802",
+    "803", "804", "805", "806", "808", "810", "812", "813", "814", "815", "816",
+    "817", "818", "820", "828", "830", "831", "832", "838", "840", "843", "845",
+    "847", "848", "850", "854", "856", "857", "858", "859", "860", "861", "862",
+    "863", "864", "865", "870", "872", "878", "901", "903", "904", "906", "907",
+    "908", "909", "910", "912", "913", "914", "915", "916", "917", "918", "919",
+    "920", "925", "928", "929", "930", "931", "934", "935", "937", "938", "939", "940",
+    "941", "943", "947", "948", "949", "951", "952", "954", "956", "957", "959",
+    "970", "971", "972", "973", "975", "978", "979", "980", "984", "985", "986",
+    "989",
+];
 
 // --- Initialize Game State ---
 function initializeGame() {
@@ -39,7 +75,7 @@ function initializeGame() {
     isGameOver = false;
     generatedObstacleCount = 0; // Initialize obstacle count
     // Initialize so the first obstacle generates after the default interval
-    lastGenerationFrame = -150; // or 0, depends on exact timing desired
+    lastGenerationFrame = -150;
 
     // Clear previous elements and state
     player.style.top = `${playerY}px`;
@@ -57,9 +93,8 @@ function initializeGame() {
     if (gameLoopId) {
         cancelAnimationFrame(gameLoopId);
     }
-
+    // First message at the beginning of the game
     createPauseMessage("Let's get started!", specialCase = 'first');
-
     // Start the game loop
     gameLoopId = requestAnimationFrame(gameLoop);
 }
@@ -159,24 +194,24 @@ function createPauseMessage(text, specialCase = "") {
     const messageElement = document.createElement('div');
     messageElement.classList.add('pause-message');
     messageElement.textContent = text;
-
-    // --- Styling (Apply directly or via CSS class) ---
+    // Style directly here
     messageElement.style.position = 'absolute';
     messageElement.style.color = '#CFB87C';
     messageElement.style.fontSize = '24px';
     messageElement.style.fontWeight = 'bold';
     messageElement.style.whiteSpace = 'pre';
     messageElement.style.top = `${gameAreaHeight / 2 - 15}px`; // Center vertically 
-    messageElement.style.textAlign = 'center'; 
-    
+    messageElement.style.textAlign = 'center';
+
     if (specialCase === 'first') {
         // If this is the first message it has to be displayed to the left of the obstacle
         messageElement.style.right = '100px';
     } else if (specialCase === 'last') {
         // If this is the last message it's closer to the obstacle
-        messageElement.style.right = '40px';
+        messageElement.style.right = '30px';
     } else {
-        messageElement.style.right = `-150px`; 
+        // For all other messages, position it off-screen to the right
+        messageElement.style.right = `-150px`;
     }
 
     // We'll use a data attribute to mark it
@@ -210,15 +245,12 @@ function gameLoop() {
     if (playerY + player.offsetHeight > gameAreaHeight) {
         playerY = gameAreaHeight - player.offsetHeight;
         playerVelocityY = 0;
-        // Optional: Implement game over on hitting ground if desired
-        // isGameOver = true;
+        // isGameOver = true; // Comment out to make the game end on bottom hit
     }
     player.style.top = `${playerY}px`;
 
     // 3. Generate Obstacles
-
-    // NEW CODE
-    if (generatedObstacleCount < 10) { // Only generate if we haven't reached the max (10)
+    if (generatedObstacleCount < 10) { // Only generate if we haven't reached the max
         const defaultInterval = 150; // Base spacing interval (frames)
         const pauseMultiplier = 2;   // How much longer the pause is (e.g., 3 * 150 = 450 frames)
         let requiredInterval = defaultInterval;
@@ -231,14 +263,11 @@ function gameLoop() {
 
         // Check if enough frames have passed since the last generation
         if (frameCount - lastGenerationFrame >= requiredInterval) {
-            // Optional: Limit concurrent obstacles on screen if desired
-            // if (obstacles.length < 3) {
-                createObstacleSet();
-                generatedObstacleCount++; // Increment the total count
-                lastGenerationFrame = frameCount; // Record the frame count for this generation
-            // }
-
+            createObstacleSet();
+            generatedObstacleCount++; // Increment the total count
+            lastGenerationFrame = frameCount; // Record the frame count for this generation
         }
+
     }
 
 
@@ -265,7 +294,7 @@ function gameLoop() {
                 if (checkCollision(playerRect, blockRect)) {
                     collisionDetectedThisSet = true; // Mark collision happened
                     const numberValue = block.dataset.value;
-                    
+
                     // --- Start Explosion ---
                     // Calculate center of the block relative to the gameArea
                     const gameAreaRect = gameArea.getBoundingClientRect();
@@ -276,21 +305,28 @@ function gameLoop() {
 
                     if (generatedObstacleCount === 2) {
                         enteredPhoneNumber = '('; // Start area code with opening parenthesis
-                    }    
+                    }
                     enteredPhoneNumber += numberValue;
                     if (enteredPhoneNumber.length === 4) {
-                        enteredPhoneNumber += ') '; // Add closing parenthesis after 3rd digit
-                        createPauseMessage("Congratulations!\nYou entered the area code!");
-                    }    
+                        enteredAreaCode = enteredPhoneNumber.slice(-3);
+                        // check if the player has entered a valid area code
+                        if (!areaCodes.includes(enteredAreaCode)) {
+                            isGameOver = true;
+                            createPauseMessage("Dude this is not even\na valid area code.\nLOCK IN!", specialCase = 'last');
+                            // restartButton.style.display = 'block'; // Show restart button (comment out if you want it hidden initially)
+                        } else {
+                            enteredPhoneNumber += ') '; // Add closing parenthesis after 3rd digit
+                            createPauseMessage("Congratulations!\nYou entered the area code!");
+                        }
+                    }
                     if (enteredPhoneNumber.length === 9) {
                         enteredPhoneNumber += '-'; // Add dash after 6th digit
                         createPauseMessage("Come on you entered the prefix!\nYou can do it!");
-                    }    
+                    }
                     phoneDisplay.textContent = `Entered: ${enteredPhoneNumber}`;
                     obstacleSet.dataset.scored = 'true'; // Mark set as scored    
-                    
-                    
-                    block.style.opacity = '0'; // Fade out quickly
+
+                    block.style.opacity = '0'; // Fade out
                     block.style.pointerEvents = 'none'; // Prevent re-collision
 
                     // Check if game should end
@@ -299,12 +335,12 @@ function gameLoop() {
                         createPauseMessage("Phone number\ncomplete!\n(Maybe?)", specialCase = 'last');
                         // restartButton.style.display = 'block'; // Show restart button (comment out if you want it hidden initially)
                     }
+
                 }
             }
         });
 
         // 5. Remove Off-Screen Obstacles
-        // Use gameArea.offsetWidth as the boundary check
         if (setRect.left > gameArea.offsetWidth) {
             console.log("Removing obstacle that went right?"); // Should be left < 0
         }

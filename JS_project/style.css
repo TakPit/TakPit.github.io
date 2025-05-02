@@ -5,11 +5,11 @@ body {
     align-items: center;
     font-family: Roboto, sans-serif;
     background-image: url('anthony_background.jpg');
-    background-repeat: no-repeat; /* Prevent tiling */
-    background-size: cover;       /* Scale image to cover the whole body */
-    background-position: top center; /* Center the image */
-    background-attachment: fixed; /* Optional: Makes background fixed during scroll */
-    max-height: 95vh; /* Ensure body takes at least full viewport height */
+    background-repeat: no-repeat; 
+    background-size: cover;       
+    background-position: top center; 
+    background-attachment: fixed; 
+    max-height: 95vh;
 }
 
 h1 {
@@ -98,14 +98,28 @@ h1 {
     /* display: none; Comment out to hide it initially */
 }
 #restart-button:hover {
-    background-color: #555; /* Darker background on hover */
-    color: #fff; /* White text on hover */
+    background-color: black;
+    color: #CFB87C;
 }
 
-#funny-message {
+#funny-message1 {
     position: fixed;
     bottom: 90px;
     left: 67%;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: 1px solid black;
+    background-color: #f0f0f0;
+    max-width: 95%;
+    box-sizing: border-box;
+}
+
+#funny-message2 {
+    position: fixed;
+    bottom: 10px;
+    left: 81%;
     text-align: center;
     font-size: 18px;
     margin-top: 10px;
